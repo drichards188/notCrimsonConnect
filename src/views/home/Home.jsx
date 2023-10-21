@@ -2,28 +2,34 @@ import logo from "../../logo.svg";
 import "../../App.css";
 import Login from "../../components/login/login";
 import {Box, Card, CardContent, Grid} from "@mui/material";
-import Event from "../../components/event/Event";
+import EventThumb from "../../components/event/EventThumb";
+import NavigateButton from "../../components/lib/NavigateButton";
 
 const Home = () => {
     return (
         <div className="App">
             <header className="App-header">
-                <Grid container>
-                    <Grid item md={8}>
+                <Grid container spacing={2}
+                      direction="column"
+                      alignItems="center"
+                      justifyContent="center"
+                >
+                    <Grid item sm={6} style={{'backgroundColor': '#333333'}}>
                         <CardContent>
                             NotCrimsonConnect
                         </CardContent>
                     </Grid>
-                    <Grid item md={4}>
+
+                    <Grid item sm={4}>
                         <Box>Login/Logout</Box>
+                        <NavigateButton url="login" displayText="Login"/>
                     </Grid>
 
-                    <Grid item md={6}>
+                    <Grid item sm={12}>
                         <Grid item>
-                            <Event />
+                            <EventThumb/>
                         </Grid>
                     </Grid>
-
                 </Grid>
             </header>
         </div>

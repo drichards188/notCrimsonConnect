@@ -1,7 +1,7 @@
 import logo from "../../logo.svg";
 import "../../App.css";
 import {Button, Card, CardContent, Grid, Link} from "@mui/material";
-import HomeButton from "../../views/home/HomeButton";
+import NavigateButton from "../lib/NavigateButton";
 const Login = () => {
 
     return (
@@ -14,7 +14,7 @@ const Login = () => {
                             Login
                         </CardContent>
 
-                        <HomeButton/>
+                        <NavigateButton url="home" displayText="Home"/>
                     </Card>
                 </Grid>
             </header>
