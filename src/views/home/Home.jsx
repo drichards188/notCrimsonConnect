@@ -22,9 +22,10 @@ const Home = () => {
 
                     <Grid item sm={4}>
                         <Box>Login/Logout</Box>
-                        <NavigateButton url="login" displayText="Login"/>
+                        <NavigateButton url="login" displayText="Logout"/>
                     </Grid>
 
+                    {/*todo render eventThumbs for all event data*/}
                     <Grid item sm={12}>
                         <Grid item>
                             <EventThumb/>
