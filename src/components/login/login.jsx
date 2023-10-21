@@ -1,7 +1,9 @@
+import {Button} from "@mui/material";
+
 const Login = () => {
     return (
         <div>
-            <h1>Login</h1>
+            <Button onClick={() => alert('Logged In')}>Login</Button>
         </div>
     )
 }
