@@ -1,6 +1,7 @@
 import logo from "../../logo.svg";
 import "../../App.css";
 import {Button, Card, CardContent, Grid, Link} from "@mui/material";
+import HomeButton from "../../views/home/HomeButton";
 const Login = () => {
 
     return (
@@ -11,12 +12,9 @@ const Login = () => {
                     <Card>
                         <CardContent>
                             Login
-                            {/*<Button onClick={}>Go to home</Button>*/}
                         </CardContent>
 
-                        <li>
-                            <Link to={`localhost:3000/home`}>Go To Home</Link>
-                        </li>
+                        <HomeButton/>
                     </Card>
                 </Grid>
             </header>
