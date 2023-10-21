@@ -1,19 +1,29 @@
 import logo from "../../logo.svg";
 import "../../App.css";
 import Login from "../../components/login/login";
-import {Card, CardContent, Grid} from "@mui/material";
+import {Box, Card, CardContent, Grid} from "@mui/material";
+import Event from "../../components/event/Event";
 
 const Home = () => {
     return (
         <div className="App">
             <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <Grid>
-                    <Card>
+                <Grid container>
+                    <Grid item md={8}>
                         <CardContent>
-                            Home
+                            NotCrimsonConnect
                         </CardContent>
-                    </Card>
+                    </Grid>
+                    <Grid item md={4}>
+                        <Box>Login/Logout</Box>
+                    </Grid>
+
+                    <Grid item md={6}>
+                        <Grid item>
+                            <Event />
+                        </Grid>
+                    </Grid>
+
                 </Grid>
             </header>
         </div>
