@@ -40,14 +40,26 @@ async function getEvents(param) {
         });
 }
 
-export function fetchQuestions() {
+// export function fetchEvents() {
+//     // comment out whichever url you dont want to use (based on heroku or local postgres)
+//     return fetch("https://747af3ca-c538-4582-a45c-d4a07d389682.mock.pstmn.io/event")
+//         .then((response) => {
+//             if (!response.ok) {
+//                 throw new Error("Network response was not ok");
+//             }
+//             // alert(`fetchQuestions resp: ${JSON.stringify(response)}`);
+//             return response.json();
+//         });
+// }
+
+export function fetchEvents() {
     // comment out whichever url you dont want to use (based on heroku or local postgres)
-    return fetch("https://747af3ca-c538-4582-a45c-d4a07d389682.mock.pstmn.io/event")
+    return fetch("http://10.6.128.227:5000/all_events")
         .then((response) => {
             if (!response.ok) {
                 throw new Error("Network response was not ok");
             }
-            // alert(`fetchQuestions resp: ${JSON.stringify(response)}`);
+            alert(`fetchEvents resp: ${JSON.stringify(response)}`);
             return response.json();
         });
 }
