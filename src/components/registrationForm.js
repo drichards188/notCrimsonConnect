@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
 import './style.css';
+import { useNavigate } from "react-router-dom";
+import {Button} from "@mui/material";
 
 function RegistrationForm() {
 
@@ -25,7 +27,20 @@ function RegistrationForm() {
             validatePassword(value);
         }
     }
+    const NavigateButton = ({url, displayText}) => {
+        // alert(JSON.stringify(displayText));
+        const navigate = useNavigate();
 
+        function handleClick() {
+            navigate(`/${url}`);
+        }
+
+        return (
+            <Button onClick={handleClick}>
+                {displayText}
+            </Button>
+        );
+    }
     const validatePassword = (value) => {
         // Implement your password validation rules here
         if (value.length < 8) {
@@ -84,9 +99,8 @@ function RegistrationForm() {
                 </div>
                 <div className="form">
                     <div className="form-body">
-                        {/* ... (other input fields) */}
                         <div className="footer">
-                            <button type="button" className="btn" onClick={handleSubmit}> Register </button>
+                            <NavigateButton type="button" className="btn" url="home" displayText="Create Account" />
                         </div>
                         <div className="message">{message}</div> {/* Add this */}
                     </div>
