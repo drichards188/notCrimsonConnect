@@ -1,23 +1,13 @@
-import logo from "../../logo.svg";
-import "../../App.css";
-import Login from "../../components/login/login";
-import {Card, CardContent, Grid} from "@mui/material";
+import "../../../src/components/login/login_style.css";
+import Header from '../../components/header';
+import login from "../../components/login/login";
 
-const Home = () => {
+const Register = () => {
     return (
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <Grid>
-                    <Card>
-                        <CardContent>
-                            Home
-                        </CardContent>
-                    </Card>
-                </Grid>
-            </header>
+            <Header/>
+            <login/>
         </div>
     )
 };
-
-export default Home;
+export default Register;
