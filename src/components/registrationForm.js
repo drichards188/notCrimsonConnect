@@ -100,7 +100,26 @@ function RegistrationForm() {
                 <div className="form">
                     <div className="form-body">
                         <div className="footer">
-                            <NavigateButton type="button" className="btn" url="home" displayText="Create Account" />
+                            {/*<NavigateButton type="button" className="btn" url="home" displayText="Create Account" />*/}
+                            <Button onClick={() => {
+                                const requestOptions = {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({
+                                        "user_name":firstName.concat(lastName),
+                                        "password":password,
+                                        "confirm_password":confirmPassword,
+                                        "first_name":firstName,
+                                        "last_name":lastName,
+                                        "phone_number":"1234567890",
+                                        "email": email
+                                    })
+                                };
+                                fetch('http://10.6.128.227:5000/register', requestOptions)
+                                    .then(response => response.json())
+                                    .then(data => alert(`data is: ${JSON.stringify(data)}`))}
+
+                            }>Create User</Button>
                         </div>
                         <div className="message">{message}</div> {/* Add this */}
                     </div>
