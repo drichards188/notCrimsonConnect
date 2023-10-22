@@ -22,10 +22,10 @@ const Home = () => {
             async function getEvents() {
                 try {
                     let result = await fetchEvents();
-                    alert(`result: ${JSON.stringify(result)}`);
+                    // alert(`result: ${JSON.stringify(result)}`);
                     setEventData(result);
                 } catch (e) {
-                    alert(`error: ${e}`);
+                    // alert(`error: ${e}`);
                 }
             }
 
@@ -51,25 +51,6 @@ const Home = () => {
                         </Grid>
                         <Grid item sm={12}>
                             MSU Denver NotCrimsonConnect
-                            <Button onClick={() => {
-                                const requestOptions = {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify({
-                                        "user_name":"johndoe5",
-                                        "password":"D12345678",
-                                        "confirm_password":"D12345678",
-                                        "first_name":"john",
-                                        "last_name":"cena",
-                                        "phone_number":"1234567890",
-                                        "email": "dtr5@gmail.com"
-                                    })
-                                };
-                                fetch('http://10.6.128.227:5000/register', requestOptions)
-                                    .then(response => response.json())
-                                    .then(data => alert(`data is: ${JSON.stringify(data)}`))}
-
-                            }>Create User</Button>
 
                         </Grid>
                     </Paper>
@@ -92,7 +73,7 @@ const Home = () => {
                 <Grid item sm={2}>
                     <Paper elevation={6}>
                         <Box>Account</Box>
-                        <NavigateButton url="login" displayText="Logout"/>
+                        <NavigateButton url="" displayText="Logout"/>
                     </Paper>
                 </Grid>
             </Grid>

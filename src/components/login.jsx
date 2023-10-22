@@ -69,7 +69,7 @@ function RegistrationForm() {
             <div className="form-body">
                 <div className="username">
                     <label className="form__label" form="firstName"> First Name </label>
-                    <input className="form_input" type="text"
+                    <input autofocus="true" className="form_input" type="text"
                            value={firstName} onChange = {(e) => handleInputChange(e)}
                            id="firstName" placeholder="First Name"/>
                 </div>

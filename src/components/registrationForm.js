@@ -3,7 +3,9 @@ import './style.css';
 import { useNavigate } from "react-router-dom";
 import {Button} from "@mui/material";
 
+
 function RegistrationForm() {
+    const navigate = useNavigate();
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -69,7 +71,7 @@ function RegistrationForm() {
             <div className="form-body">
                 <div className="username">
                     <label className="form__label" form="firstName"> First Name </label>
-                    <input className="form_input" type="text"
+                    <input autoFocus="true" className="form_input" type="text"
                            value={firstName} onChange = {(e) => handleInputChange(e)}
                            id="firstName" placeholder="First Name"/>
                 </div>
@@ -106,7 +108,7 @@ function RegistrationForm() {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify({
-                                        "user_name":firstName.concat(lastName),
+                                        "username":firstName.concat(lastName),
                                         "password":password,
                                         "confirm_password":confirmPassword,
                                         "first_name":firstName,
@@ -117,7 +119,7 @@ function RegistrationForm() {
                                 };
                                 fetch('http://10.6.128.227:5000/register', requestOptions)
                                     .then(response => response.json())
-                                    .then(data => alert(`data is: ${JSON.stringify(data)}`))}
+                                    .then(data => navigate(`/home`))}
 
                             }>Create User</Button>
                         </div>

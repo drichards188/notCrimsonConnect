@@ -27,7 +27,7 @@ const EventThumb = ({
             <Grid item sm={6} style={{'padding': '1%', 'backgroundColor': 'rgba(0,0,0,.25'}}>
                 <Grid item sm={10}>
                     <Paper elevation={3}>
-                        <h1>{data.event_name}</h1>
+                        <h1>{data.name}</h1>
                     </Paper>
                 </Grid>
 
