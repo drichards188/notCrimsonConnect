@@ -1,4 +1,12 @@
 export function getEvents() {
+    const fetchPromise = fetch("https://747af3ca-c538-4582-a45c-d4a07d389682.mock.pstmn.io/event");
+    fetchPromise.then(response => {
+        return response.json();
+    }).then(response => {
+        alert(JSON.stringify(response));
+    });
+
+
     return [
         {
             "name": "TechFest 2023",
