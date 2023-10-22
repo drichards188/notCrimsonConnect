@@ -1,5 +1,5 @@
 import logo from "../../logo.svg";
-import "../../App.css";
+import "./home.css";
 import {Box, Card, CardContent, Grid, Paper} from "@mui/material";
 import EventThumb from "../../components/event/EventThumb";
 import NavigateButton from "../../components/lib/NavigateButton";
@@ -77,16 +77,37 @@ const [eventData, setEventData] = useState([
 
 
     return (
-        <div className="App">
-            <header className="App-header">
-                <Grid container spacing={2} sx={{justifyContent: 'space-between'}} style={{'marginBottom': '1%'}}>
-
-                    <Grid item sm={2} style={{}}>
-
+        <Grid container spaceing={2} className="App">
+            {/*<header className="App-header">*/}
+                <Grid container spacing={2} sx={{justifyContent: 'space-between'}}>
+                    <Grid item sm={2}>
                         <Paper elevation={6}>
+                            <Grid item sm={12}>
+                            <img src={roadrunnerLogo} style={{height: 200,
+                                width: 197,
+                                maxHeight: { xs: 233, md: 370 },
+                                maxWidth: { xs: 350, md: 367 }}} alt="msu logo"/>
+                            </Grid>
+                            <Grid item sm={12}>
                             MSU Denver NotCrimsonConnect
+                            </Grid>
                         </Paper>
                     </Grid>
+
+                <Grid item sm={6}
+
+                      alignContent="center" justifyContent="center"
+                      sx={{
+                          overflowY: "scroll",
+                          maxHeight: "100vh"
+                      }}
+                >
+                    {eventData.map((eventData) => (
+                        <Grid item sm={12}>
+                            <EventThumb data={eventData}/>
+                        </Grid>
+                    ))}
+                </Grid>
 
                     <Grid item sm={4}>
                         <Paper elevation={6}>
@@ -95,35 +116,8 @@ const [eventData, setEventData] = useState([
                         </Paper>
                     </Grid>
                 </Grid>
-                <Box
-                    component="img"
-                    sx={{
-                        height: 420,
-                        width: 417,
-                        maxHeight: { xs: 233, md: 370 },
-                        maxWidth: { xs: 350, md: 367 },
-                    }}
-                    alt="The house from the offer."
-                    src={roadrunnerLogo}
-                />
-
-                {eventData.length < 2 &&
-                    <h1>... fetching event data</h1>}
-
-                <Grid container spacing={2}
-                      direction="column"
-                      alignItems="center"
-                      justifyContent="center"
-                      style={{maxWidth: '100vw', overflowY: "scroll"}}
-                >
-                    {eventData.map((eventData) => (
-                        <Grid item sm={6}>
-                            <EventThumb data={eventData}/>
-                        </Grid>
-                    ))}
-                </Grid>
-            </header>
-        </div>
+            {/*</header>*/}
+        </Grid>
     )
 };
 

@@ -21,8 +21,10 @@ const EventThumb = ({
     }
 
     return (
-        <Grid container direction="row" justifyContent="right">
-            <Grid item sm={12} style={{'padding': '1%', 'backgroundColor': 'rgba(0,0,0,.25'}}>
+        <Grid container direction="column"
+              alignItems="center"
+              justifyContent="center">
+            <Grid item sm={6} style={{'padding': '1%', 'backgroundColor': 'rgba(0,0,0,.25'}}>
                 <Grid item sm={10}>
                     <Paper elevation={3}>
                         <h1>{data.name}</h1>
