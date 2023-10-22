@@ -4,15 +4,8 @@ import {Box, Card, CardContent, Grid, Paper} from "@mui/material";
 import EventThumb from "../../components/event/EventThumb";
 import NavigateButton from "../../components/lib/NavigateButton";
 import {useEffect, useState} from "react";
-import {getEvents} from "../../components/lib/api";
+import {createEventAsync, getEventData} from "../../components/lib/api";
 import roadrunnerLogo from "../../roadrunnerLogo.png";
-
-async function getEventData() {
-    const fetchedEventData = await getEvents();
-    if (fetchedEventData !== undefined) {
-        return fetchedEventData;
-    }
-}
 
 const Home = () => {
     // const [eventData, setEventData] = useState([{
@@ -65,15 +58,22 @@ const [eventData, setEventData] = useState([
         "club_name": "Entrepreneurship Club"
     }
 ]);
-    useEffect(() => {
-        if (eventData === undefined || eventData.length < 2) {
-            const fetchedEventData = getEventData();
-            alert(`fetchedEventData: ${JSON.stringify(fetchedEventData)}`);
-            if (fetchedEventData !== undefined && fetchedEventData.length > 1) {
-                setEventData(fetchedEventData);
-            }
-        }
-    }, [eventData]);
+//     useEffect(async () => {
+//         if (eventData === undefined || eventData.length < 2) {
+//             // const fetchedEventData = createEventAsync();
+//             // alert(`fetchedEventData: ${JSON.stringify(fetchedEventData)}`);
+//             // if (fetchedEventData !== undefined && fetchedEventData.length > 1) {
+//                 let result = getEventData();
+//                 setEventData(result)
+//             // }
+//         }
+//     }, [eventData]);
+
+    // useEffect(async () => {
+    //     let result = await getEventData();
+    //     alert(`result: ${JSON.stringify(result)}`);
+    //     setEventData(result);
+    // }, [eventData]);
 
 
     return (
@@ -109,7 +109,7 @@ const [eventData, setEventData] = useState([
                     ))}
                 </Grid>
 
-                    <Grid item sm={4}>
+                    <Grid item sm={2}>
                         <Paper elevation={6}>
                             <Box>Account</Box>
                             <NavigateButton url="login" displayText="Logout"/>

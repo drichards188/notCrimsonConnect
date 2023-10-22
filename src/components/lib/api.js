@@ -1,52 +1,99 @@
-export function getEvents() {
-    const fetchPromise = fetch("https://747af3ca-c538-4582-a45c-d4a07d389682.mock.pstmn.io/event");
-    fetchPromise.then(response => {
-        return response.json();
-    }).then(response => {
-        alert(JSON.stringify(response));
+import axios from "axios";
+
+// export async function createEventAsync() {
+//     const response = await getEvents();
+//     alert(JSON.stringify(response));
+//     return response;
+//
+// }
+export async function createEventAsync() {
+    return new Promise(function (resolve, reject) {
+        getEvents("param", function (err, data) {
+            if (err !== null) {
+                alert(`rejected: ${err}`);
+                reject(err)
+            } else {
+                alert(`resolved: ${data}`);
+                resolve(data)
+            }
+        });
     });
+}
 
+async function getEvents(param) {
+    const token =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ6YWxhIiwiZXhwIjoxNjc0NzUyNTAzfQ.aMsKp7pp2v2cXT7aUkJuB2P7exufrBeihEiQARMRWFg";
 
-    return [
-        {
-            "name": "TechFest 2023",
-            "start_date": "2023-11-01",
-            "end_date": "2023-11-03",
-            "location": "Engineering Building, Room 101",
-            "description": "A three-day event showcasing the latest technological innovations by students. Workshops, panels, and competitions included.",
-            "club_name": "Tech Club"
+    let response = await axios({
+        method: "get",
+        url: `https://747af3ca-c538-4582-a45c-d4a07d389682.mock.pstmn.io/event`,
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
         },
-        {
-            "name": "Art Showcase: Autumn Visions",
-            "start_date": "2023-11-15",
-            "end_date": "2023-11-20",
-            "location": "Campus Art Gallery",
-            "description": "An art exhibition featuring the works of budding artists, capturing the essence of autumn.",
-            "club_name": "Art Society"
-        },
-        {
-            "name": "Eco Day Fair",
-            "start_date": "2023-11-25",
-            "end_date": "2023-11-25",
-            "location": "Central Campus Lawn",
-            "description": "Join us for a day of eco-friendly workshops, stalls, and talks. Learn how you can make a difference for our planet.",
-            "club_name": "Eco Warriors"
-        },
-        {
-            "name": "Winter Wonderland Ball",
-            "start_date": "2023-12-10",
-            "end_date": "2023-12-10",
-            "location": "Campus Grand Hall",
-            "description": "A magical night of dance, music, and winter-themed festivities. Formal attire required.",
-            "club_name": "Dance Ensemble"
-        },
-        {
-            "name": "Entrepreneurship Pitch Night",
-            "start_date": "2023-12-18",
-            "end_date": "2023-12-18",
-            "location": "Business Auditorium, Room 201",
-            "description": "Witness the next generation of entrepreneurs as they pitch their innovative business ideas to a panel of industry experts.",
-            "club_name": "Entrepreneurship Club"
-        }
-    ]
+    })
+        .then(function (response) {
+            //handle success
+            alert("success " + JSON.stringify(response));
+            Promise.resolve("Success!");
+            return response;
+        })
+        .catch(function (response) {
+            //handle error
+            alert("failed " + response);
+            Promise.reject("Failed!");
+            return response;
+        });
+}
+
+// const simpleFetch= () => {
+//     fetch('https://747af3ca-c538-4582-a45c-d4a07d389682.mock.pstmn.io/event')
+//
+//         .then(
+//
+//             function(response) {
+//
+//                 if (response.status !== 200) {
+//
+//                     console.log('Looks like there was a problem. Status Code: ' +
+//
+//                         response.status);
+//
+//                     return;
+//
+//                 }
+// }
+
+// export async function getEvents(param) {
+//     const token =
+//         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ6YWxhIiwiZXhwIjoxNjc0NzUyNTAzfQ.aMsKp7pp2v2cXT7aUkJuB2P7exufrBeihEiQARMRWFg";
+//
+//     let response = await axios({
+//         method: "get",
+//         url: `https://747af3ca-c538-4582-a45c-d4a07d389682.mock.pstmn.io/event`,
+//         headers: {
+//             "Content-Type": "application/json",
+//             Authorization: `Bearer ${token}`,
+//         },
+//     })
+//         .then(function (response) {
+//             //handle success
+//             alert("success " + JSON.stringify(response));
+//             return response;
+//         })
+//         .catch(function (response) {
+//             //handle error
+//             alert("failed " + response);
+//             return response;
+//         });
+//     return new Promise<{ response }>((resolve) =>
+//             setTimeout(() => resolve({ data: response }))
+//     );
+// }
+
+export async function getEventData() {
+    const response = await fetch('https://747af3ca-c538-4582-a45c-d4a07d389682.mock.pstmn.io/event');
+    const result = await response.json();
+    alert(`result: ${JSON.stringify(result)}`);
+    return result;
 }
