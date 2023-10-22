@@ -1,4 +1,5 @@
 import {Grid, Paper} from "@mui/material";
+import EventDetail from "./EventDetail";
 
 const EventThumb = ({
                         data = {
@@ -20,36 +21,19 @@ const EventThumb = ({
     }
 
     return (
-        <Grid container style={{'backgroundColor': 'black'}} spacing={2}>
-            <Paper elevation={3}>
-                <Grid item sm={12}>
-                    <h1>{data.name}</h1>
-                </Grid>
-
-                <Grid item sm={6} style={{'backgroundColor':'red'}}>
-
+        <Grid container style={{'backgroundColor': 'black', 'margin': '2%'}} spacing={2}>
+            {/*<Paper elevation={3}>*/}
                     <Grid item sm={12}>
-
-                        {data.start_date}
-
+                        <h1>{data.name}</h1>
                     </Grid>
-                    <Grid item sm={12}>
 
-                        {data.description}
-
+                    <Grid item sm={6} style={{'backgroundColor': 'black'}}>
+                        <EventDetail data={data.start_date}/>
+                        <EventDetail data={data.club_name}/>
+                        <EventDetail data={data.location}/>
+                        <EventDetail data={data.description}/>
                     </Grid>
-                    <Grid item sm={12}>
-
-                        {data.club_name}
-
-                    </Grid>
-                    <Grid item sm={12}>
-
-                        {data.location}
-
-                    </Grid>
-                </Grid>
-            </Paper>
+            {/*</Paper>*/}
         </Grid>
     )
         ;
