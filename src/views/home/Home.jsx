@@ -74,7 +74,6 @@ const Home = () => {
                     alert(`error: ${e}`);
                 }
             }
-
             getEvents();
         }
 
@@ -116,7 +115,7 @@ const Home = () => {
                 <Grid item sm={2}>
                     <Paper elevation={6}>
                         <Box>Account</Box>
-                        <NavigateButton url="login" displayText="Logout"/>
+                        <NavigateButton url="" displayText="Logout"/>
                     </Paper>
                 </Grid>
             </Grid>

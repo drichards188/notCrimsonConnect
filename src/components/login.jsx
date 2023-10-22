@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './login_style.css';
 import {useNavigate} from "react-router-dom";
 import {Button} from "@mui/material";
+import roadrunnerLogo from "../roadrunnerLogo.png";
 
 function RegistrationForm() {
 
@@ -55,7 +56,6 @@ function RegistrationForm() {
             console.log(username,password);
         }
     };
-
 
     return(
         <div className="form">

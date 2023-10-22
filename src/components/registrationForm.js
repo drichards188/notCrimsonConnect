@@ -12,6 +12,7 @@ function RegistrationForm() {
     const [confirmPassword,setConfirmPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleInputChange = (e) => {
         const {id , value} = e.target;
@@ -117,7 +118,7 @@ function RegistrationForm() {
                                 };
                                 fetch('http://10.6.128.227:5000/register', requestOptions)
                                     .then(response => response.json())
-                                    .then(data => alert(`data is: ${JSON.stringify(data)}`))}
+                                    .then(data => navigate(`/home`))}
 
                             }>Create User</Button>
                         </div>
