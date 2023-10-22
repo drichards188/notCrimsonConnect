@@ -21,28 +21,34 @@ const EventThumb = ({
     }
 
     return (
-        <Grid item sm={12} style={{'padding':'1%', 'backgroundColor':'rgba(0,0,0,.25'}}>
-                    <Grid item sm={10}>
-                        <Paper elevation={3}>
+        <Grid container direction="column"
+              alignItems="center"
+              justifyContent="center">
+            <Grid item sm={6} style={{'padding': '1%', 'backgroundColor': 'rgba(0,0,0,.25'}}>
+                <Grid item sm={10}>
+                    <Paper elevation={3}>
                         <h1>{data.name}</h1>
                     </Paper>
-                    </Grid>
+                </Grid>
 
-                    <Grid item sm={6} >
-                        <Paper elevation={3}>
+                <Grid item sm={6}>
+                    <Paper elevation={3}>
                         <EventDetail data={data.start_date}/>
                         <EventDetail data={data.club_name}/>
                         <EventDetail data={data.location}/>
                         <EventDetail data={data.description}/>
-                        </Paper>
-                    </Grid>
+                    </Paper>
+                </Grid>
 
-                    <Grid item sm={4}>
-                        <Button onClick={() => alert('Saved event')} style={{backgroundColor:'black'}}>Save</Button>
-
-
-                        <Button onClick={() => alert('Share event')} style={{backgroundColor:'black'}}>Share</Button>
-                    </Grid>
+                <Grid container sx={{justifyContent: 'space-between'}}>
+                <Grid item sm={4} style={{'backgroundColor':'#333333'}} onClick={() => alert('Saved event')}>
+                    <Button  >Save</Button>
+                </Grid>
+                <Grid item sm={4} style={{'backgroundColor':'#333333'}} onClick={() => alert('Share event')}>
+                    <Button  >Share</Button>
+                </Grid>
+            </Grid>
+        </Grid>
         </Grid>
     );
 }
