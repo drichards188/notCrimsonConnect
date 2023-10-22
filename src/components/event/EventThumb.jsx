@@ -1,4 +1,4 @@
-import {Grid, Paper} from "@mui/material";
+import {Button, Grid, Paper} from "@mui/material";
 import EventDetail from "./EventDetail";
 
 const EventThumb = ({
@@ -21,22 +21,30 @@ const EventThumb = ({
     }
 
     return (
-        <Grid container style={{'backgroundColor': 'black', 'margin': '2%'}} spacing={2}>
-            {/*<Paper elevation={3}>*/}
-                    <Grid item sm={12}>
+        <Grid item sm={12} style={{'padding':'1%', 'backgroundColor':'rgba(0,0,0,.25'}}>
+                    <Grid item sm={10}>
+                        <Paper elevation={3}>
                         <h1>{data.name}</h1>
+                    </Paper>
                     </Grid>
 
-                    <Grid item sm={6} style={{'backgroundColor': 'black'}}>
+                    <Grid item sm={6} >
+                        <Paper elevation={3}>
                         <EventDetail data={data.start_date}/>
                         <EventDetail data={data.club_name}/>
                         <EventDetail data={data.location}/>
                         <EventDetail data={data.description}/>
+                        </Paper>
                     </Grid>
-            {/*</Paper>*/}
+
+                    <Grid item sm={4}>
+                        <Button onClick={() => alert('Saved event')} style={{backgroundColor:'black'}}>Save</Button>
+
+
+                        <Button onClick={() => alert('Share event')} style={{backgroundColor:'black'}}>Share</Button>
+                    </Grid>
         </Grid>
-    )
-        ;
+    );
 }
 
 export default EventThumb;
