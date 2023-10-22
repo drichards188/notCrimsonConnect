@@ -106,7 +106,7 @@ function RegistrationForm() {
                                     method: 'POST',
                                     headers: { 'Content-Type': 'application/json' },
                                     body: JSON.stringify({
-                                        "user_name":firstName.concat(lastName),
+                                        "username":firstName.concat(lastName),
                                         "password":password,
                                         "confirm_password":confirmPassword,
                                         "first_name":firstName,
