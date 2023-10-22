@@ -1,35 +1,58 @@
 import {Grid, Paper} from "@mui/material";
 
-const EventThumb = () => {
+const EventThumb = ({
+                        data = {
+                            "name": "TechFest 2023",
+                            "start_date": "2023-11-01",
+                            "end_date": "2023-11-03",
+                            "location": "Engineering Building, Room 101",
+                            "description": "A three-day event showcasing the latest technological innovations by students. Workshops, panels, and competitions included.",
+                            "club_name": "Tech Club"
+                        }
+                    }) => {
+
+    if (data === undefined) {
+        data.name = "No name available.";
+        data.start_date = "No start date available.";
+        data.description = "No description available.";
+        data.club_name = "No club name available.";
+        data.location = "No location available.";
+    }
+
     return (
-        <Grid container style={{'backgroundColor': 'black'}} spacing={1}>
-            <Grid item sm={12}>
-                <h1>Event goes here</h1>
-            </Grid>
-            <Grid item sm={6}>
+        <Grid container style={{'backgroundColor': 'black'}} spacing={2}>
+            <Paper elevation={3}>
                 <Grid item sm={12}>
-                    <Paper elevation={3}>
-                        long date
-                    </Paper>
+                    <h1>{data.name}</h1>
                 </Grid>
-                <Grid item sm={12}>
-                    <Paper elevation={3}>
-                        long title
-                    </Paper>
+
+                <Grid item sm={6} style={{'backgroundColor':'red'}}>
+
+                    <Grid item sm={12}>
+
+                        {data.start_date}
+
+                    </Grid>
+                    <Grid item sm={12}>
+
+                        {data.description}
+
+                    </Grid>
+                    <Grid item sm={12}>
+
+                        {data.club_name}
+
+                    </Grid>
+                    <Grid item sm={12}>
+
+                        {data.location}
+
+                    </Grid>
                 </Grid>
-                <Grid item sm={12}>
-                    <Paper elevation={3}>
-                        club
-                    </Paper>
-                </Grid>
-                <Grid item sm={12}>
-                    <Paper elevation={3}>
-                        location
-                    </Paper>
-                </Grid>
-            </Grid>
+            </Paper>
         </Grid>
-    );
+    )
+        ;
 }
 
 export default EventThumb;
