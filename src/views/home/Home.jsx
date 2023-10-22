@@ -17,12 +17,58 @@ const Home = () => {
         "club_name": "Club Name Placeholder"
     }]);
 
+    // const [eventData, setEventData] = useState([
+    //     {
+    //         "name": "TechFest 2023",
+    //         "start_date": "2023-11-01",
+    //         "end_date": "2023-11-03",
+    //         "location": "Engineering Building, Room 101",
+    //         "description": "A three-day event showcasing the latest technological innovations by students. Workshops, panels, and competitions included.",
+    //         "club_name": "Tech Club"
+    //     },
+    //     {
+    //         "name": "Art Showcase: Autumn Visions",
+    //         "start_date": "2023-11-15",
+    //         "end_date": "2023-11-20",
+    //         "location": "Campus Art Gallery",
+    //         "description": "An art exhibition featuring the works of budding artists, capturing the essence of autumn.",
+    //         "club_name": "Art Society"
+    //     },
+    //     {
+    //         "name": "Eco Day Fair",
+    //         "start_date": "2023-11-25",
+    //         "end_date": "2023-11-25",
+    //         "location": "Central Campus Lawn",
+    //         "description": "Join us for a day of eco-friendly workshops, stalls, and talks. Learn how you can make a difference for our planet.",
+    //         "club_name": "Eco Warriors"
+    //     },
+    //     {
+    //         "name": "Winter Wonderland Ball",
+    //         "start_date": "2023-12-10",
+    //         "end_date": "2023-12-10",
+    //         "location": "Campus Grand Hall",
+    //         "description": "A magical night of dance, music, and winter-themed festivities. Formal attire required.",
+    //         "club_name": "Dance Ensemble"
+    //     },
+    //     {
+    //         "name": "Entrepreneurship Pitch Night",
+    //         "start_date": "2023-12-18",
+    //         "end_date": "2023-12-18",
+    //         "location": "Business Auditorium, Room 201",
+    //         "description": "Witness the next generation of entrepreneurs as they pitch their innovative business ideas to a panel of industry experts.",
+    //         "club_name": "Entrepreneurship Club"
+    //     }
+    // ]);
+
     useEffect(() => {
         if (eventData === undefined || eventData.length < 2) {
             async function getEvents() {
                 try {
                     let result = await fetchEvents();
-                    alert(`result: ${JSON.stringify(result)}`);
+                    // alert(`result: ${JSON.stringify(result)}`);
+                    // let concatArray = [...eventData, result];
+                    // alert(`result: ${JSON.stringify(concatArray)}`);
+                    // setEventData([...eventData, result]);
                     setEventData(result);
                 } catch (e) {
                     alert(`error: ${e}`);
@@ -34,10 +80,8 @@ const Home = () => {
 
     }, [eventData]);
 
-
     return (
         <Grid container spaceing={2} className="App">
-            {/*<header className="App-header">*/}
             <Grid container spacing={2} sx={{justifyContent: 'space-between'}}>
                 <Grid item sm={2}>
                     <Paper elevation={6}>
@@ -51,26 +95,6 @@ const Home = () => {
                         </Grid>
                         <Grid item sm={12}>
                             MSU Denver NotCrimsonConnect
-                            <Button onClick={() => {
-                                const requestOptions = {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify({
-                                        "user_name":"johndoe5",
-                                        "password":"D12345678",
-                                        "confirm_password":"D12345678",
-                                        "first_name":"john",
-                                        "last_name":"cena",
-                                        "phone_number":"1234567890",
-                                        "email": "dtr5@gmail.com"
-                                    })
-                                };
-                                fetch('http://10.6.128.227:5000/register', requestOptions)
-                                    .then(response => response.json())
-                                    .then(data => alert(`data is: ${JSON.stringify(data)}`))}
-
-                            }>Create User</Button>
-
                         </Grid>
                     </Paper>
                 </Grid>
