@@ -5,6 +5,7 @@ import {Button} from "@mui/material";
 
 function RegistrationForm() {
 
+    const [username, setUsername] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -16,6 +17,7 @@ function RegistrationForm() {
     const handleInputChange = (e) => {
         const {id , value} = e.target;
         if(id === "firstName"){ setFirstName(value); }
+        if(id === "username") { setUsername(value); }
         if(id === "lastName"){ setLastName(value); }
         if(id === "email"){ setEmail(value);}
         if (id === "password") {
@@ -68,6 +70,12 @@ function RegistrationForm() {
         <div className="form">
             <div className="form-body">
                 <div className="username">
+                    <label className="form__label" form="username"> Username </label>
+                    <input className="form_input" type="text"
+                           value={firstName} onChange = {(e) => handleInputChange(e)}
+                           id="firstName" placeholder="Username"/>
+                </div>
+                <div className="firstName">
                     <label className="form__label" form="firstName"> First Name </label>
                     <input className="form_input" type="text"
                            value={firstName} onChange = {(e) => handleInputChange(e)}

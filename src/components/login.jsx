@@ -5,28 +5,22 @@ import {Button} from "@mui/material";
 
 function RegistrationForm() {
 
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
     const [password,setPassword] = useState('');
-    const [confirmPassword,setConfirmPassword] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [message, setMessage] = useState('');
 
     const handleInputChange = (e) => {
         const {id , value} = e.target;
-        if(id === "firstName"){ setFirstName(value); }
-        if(id === "lastName"){ setLastName(value); }
-        if(id === "email"){ setEmail(value);}
+        if(id === "username"){ setUsername(value); }
         if (id === "password") {
             setPassword(value);
             validatePassword(value);
         }
-        if (id === "confirmPassword") {
-            setConfirmPassword(value);
-            validatePassword(value);
-        }
     }
+
+    const isFormValid = username !== '' && password !== '';
+
     const NavigateButton = ({url, displayText}) => {
         // alert(JSON.stringify(displayText));
         const navigate = useNavigate();
@@ -54,13 +48,11 @@ function RegistrationForm() {
         }
     }
     const handleSubmit = () => {
-        if (password !== confirmPassword) {
-            setMessage("Passwords do not match.");
-        } else if (passwordError) {
+        if (passwordError) {
             setMessage(passwordError);
         } else {
             setMessage("Your response is submitted");
-            console.log(firstName, lastName, email, password, confirmPassword);
+            console.log(username,password);
         }
     };
 
@@ -68,10 +60,10 @@ function RegistrationForm() {
         <div className="form">
             <div className="form-body">
                 <div className="username">
-                    <label className="form__label" form="firstName"> First Name </label>
+                    <label className="form__label" form="username"> Username </label>
                     <input className="form_input" type="text"
-                           value={firstName} onChange = {(e) => handleInputChange(e)}
-                           id="firstName" placeholder="First Name"/>
+                           value={username} onChange = {(e) => handleInputChange(e)}
+                           id="username" placeholder="Username"/>
                 </div>
                 <div className="password">
                     <label className="form__label" form="password" aria-required> Password </label>
@@ -81,7 +73,12 @@ function RegistrationForm() {
                 </div>
                 <div className="form">
                         <div className="footer">
-                            <NavigateButton type="button" className="btn" url="home" displayText="Login" />
+                            <NavigateButton
+                                disabled={!isFormValid}
+                                type="button"
+                                className="btn"
+                                url="home"
+                                displayText="Login" />
                         </div>
                         <div className="message">{message}</div> {/* Add this */}
                 </div>
