@@ -91,9 +91,23 @@ async function getEvents(param) {
 //     );
 // }
 
-export async function getEventData() {
-    const response = await fetch('https://747af3ca-c538-4582-a45c-d4a07d389682.mock.pstmn.io/event');
-    const result = await response.json();
-    alert(`result: ${JSON.stringify(result)}`);
-    return result;
+// export async function getEventData() {
+//     const response = await fetch('https://747af3ca-c538-4582-a45c-d4a07d389682.mock.pstmn.io/event');
+//     const result = await response.json();
+//     alert(`result: ${JSON.stringify(result)}`);
+//     return new Promise<{ response }>((resolve) =>
+//             setTimeout(() => resolve({ data: response }))
+//     );
+// }
+
+export function fetchQuestions() {
+    // comment out whichever url you dont want to use (based on heroku or local postgres)
+    return fetch("https://747af3ca-c538-4582-a45c-d4a07d389682.mock.pstmn.io/event")
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+            alert(`fetchQuestions resp: ${JSON.stringify(response)}`);
+            return response.json();
+        });
 }
