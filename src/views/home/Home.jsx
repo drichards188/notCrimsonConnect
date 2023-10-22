@@ -1,6 +1,6 @@
 import logo from "../../logo.svg";
 import "./home.css";
-import {Box, Card, CardContent, Grid, Paper} from "@mui/material";
+import {Box, Button, Card, CardContent, Grid, Paper} from "@mui/material";
 import EventThumb from "../../components/event/EventThumb";
 import NavigateButton from "../../components/lib/NavigateButton";
 import {useEffect, useState} from "react";
@@ -74,7 +74,7 @@ const Home = () => {
             async function getEvents() {
                 try {
                     let result = await fetchQuestions();
-                    alert(`result: ${JSON.stringify(result)}`);
+                    // alert(`result: ${JSON.stringify(result)}`);
                     setEventData(result);
                 } catch (e) {
                     alert(`error: ${e}`);
@@ -103,6 +103,25 @@ const Home = () => {
                         </Grid>
                         <Grid item sm={12}>
                             MSU Denver NotCrimsonConnect
+                            <Button onClick={() => {
+                                const requestOptions = {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify({
+                                        "user_name":"johndoe5",
+                                        "password":"D12345678",
+                                        "confirm_password":"D12345678",
+                                        "first_name":"john",
+                                        "last_name":"cena",
+                                        "phone_number":"1234567890",
+                                        "email": "dtr5@gmail.com"
+                                    })
+                                };
+                                fetch('http://10.6.128.227:5000/register', requestOptions)
+                                    .then(response => response.json())
+                                    .then(data => alert(`data is: ${JSON.stringify(data)}`))}
+
+                            }>Send POST request</Button>
                         </Grid>
                     </Paper>
                 </Grid>
